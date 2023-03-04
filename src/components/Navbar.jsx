@@ -52,7 +52,27 @@ const Navbar = () => {
             className="w-[28px] h-[28px] object-contain cursor-pointer"
             onClick={() => setToggle(!toggle)}
           />
-          <div className={`${!toggle ? 'hidden' : 'flex'} p-6`}></div>
+          <div
+            className={`${
+              !toggle ? 'hidden' : 'flex'
+            } p-6 black-gradient top-20 right-0 mx-4 my-2 min-w-[140px] absolute z-10 rounded-xl`}
+          >
+            <ul className="list-none flex  flex-col justify-end items-start gap-4">
+              {navLinks.map((link) => (
+                <li
+                  key={link.id}
+                  className={`${
+                    active === link.title ? 'text-white' : 'text-secondary'
+                  } hover:text-white text-[16px] font-poppins cursor-pointer font-medium `}
+                  onClick={() => {
+                    setActive(link.title)
+                  }}
+                >
+                  <a href={`#${link.id}`}>{link.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
